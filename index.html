@@ -5,144 +5,209 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kisah Nabi Ishaq AS - Kelas 2 SD</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif; }
+  :root {
+    --primary-color: #4a90e2;
+    --primary-light: #6ba4e8;
+    --secondary-color: #2ecc71;
+    --accent-color: #ff7675;
+    --bg-color: #f0f7ff;
+    --card-bg: #ffffff;
+    --text-color: #2d3436;
+    --text-muted: #636e72;
+    --border-color: #e2e8f0;
+  }
+
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka', 'Segoe UI', sans-serif; 
+  }
   
   body {
-    background: linear-gradient(135deg, #ffe5ec 0%, #c8e7ff 50%, #d4f1d4 100%);
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 50%, #fff7ed 100%);
+    color: var(--text-color);
     min-height: 100vh;
     padding: 20px;
+    line-height: 1.6;
   }
   
   .container {
-    max-width: 900px;
+    max-width: 850px;
     margin: 0 auto;
-    background: white;
-    border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    background: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+    border: 3px solid #e2e8f0;
   }
   
   .header {
-    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
     color: white;
-    padding: 30px;
+    padding: 30px 20px;
     text-align: center;
+    border-bottom: 5px solid #2980b9;
+    position: relative;
   }
   
-  .header h1 { font-size: 2.2em; margin-bottom: 10px; }
-  .header p { font-size: 1.1em; opacity: 0.95; }
+  .header h1 { 
+    font-size: 2.2em; 
+    margin-bottom: 6px;
+    font-weight: 700;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+  }
+
+  .header p { 
+    font-size: 1.1em; 
+    opacity: 0.95; 
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 20px;
+  }
   
   .nav-dots {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    background: #f8f9fa;
+    gap: 16px;
+    padding: 16px;
+    background: #f8fafc;
+    border-bottom: 2px dashed #e2e8f0;
   }
   
   .nav-dot {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: #e0e0e0;
+    background: #cbd5e1;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: #666;
-    transition: all 0.3s;
+    color: white;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    font-size: 1.1em;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
   }
   
   .nav-dot.active {
-    background: #ff6b9d;
-    color: white;
-    transform: scale(1.2);
+    background: #ff7675;
+    transform: scale(1.15);
+    box-shadow: 0 4px 10px rgba(255, 118, 117, 0.4);
   }
   
   .nav-dot.done {
-    background: #4caf50;
-    color: white;
+    background: var(--secondary-color);
   }
   
-  .page { display: none; padding: 30px; animation: fadeIn 0.5s; }
-  .page.active { display: block; }
+  .page { 
+    display: none; 
+    padding: 35px 30px; 
+    animation: fadeIn 0.4s ease-in-out; 
+  }
+
+  .page.active { 
+    display: block; 
+  }
   
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
   
   .section-title {
-    color: #c06c84;
+    color: #2c3e50;
     font-size: 1.6em;
-    margin-bottom: 15px;
-    border-bottom: 3px dashed #ff6b9d;
-    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #74b9ff;
+    padding-bottom: 8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   
   .story-card {
-    background: linear-gradient(135deg, #fff5f7 0%, #ffe5ec 100%);
-    border-left: 5px solid #ff6b9d;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 15px;
-    font-size: 1.05em;
+    background: #f0f7ff;
+    border-left: 6px solid #4a90e2;
+    padding: 22px;
+    margin: 20px 0;
+    border-radius: 12px;
+    font-size: 1.1em;
     line-height: 1.8;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
   }
   
   .fact-box {
-    background: #fff3cd;
-    border: 2px dashed #ffc107;
-    padding: 15px;
-    border-radius: 15px;
-    margin: 15px 0;
+    background: #fff9db;
+    border: 2px dashed #f1c40f;
+    border-left: 6px solid #f39c12;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    font-size: 1.05em;
   }
   
   .info-table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 15px 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 2px solid #e2e8f0;
   }
   
   .info-table th {
-    background: #ff6b9d;
+    background: #74b9ff;
     color: white;
-    padding: 12px;
+    padding: 14px;
+    font-weight: bold;
+    font-size: 1.05em;
   }
   
   .info-table td {
     padding: 12px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e2e8f0;
     text-align: center;
+    font-size: 1.05em;
+  }
+
+  .info-table tr:last-child td {
+    border-bottom: none;
   }
   
   .btn {
-    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    background: #4a90e2;
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding: 14px 30px;
     font-size: 1.1em;
-    border-radius: 30px;
+    border-radius: 50px;
     cursor: pointer;
-    margin: 10px 5px;
-    transition: all 0.3s;
+    margin: 8px 6px;
+    transition: all 0.2s ease;
     font-weight: bold;
-    box-shadow: 0 4px 15px rgba(255,107,157,0.4);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
   }
   
   .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255,107,157,0.6);
+    background: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.4);
   }
   
   .btn-secondary {
-    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-    box-shadow: 0 4px 15px rgba(76,175,80,0.4);
+    background: #2ecc71;
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: #27ae60;
+    box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
   }
   
   .btn-container {
@@ -152,17 +217,22 @@
   
   /* DAFTAR SISWA */
   .student-list-box {
-    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-    border: 2px solid #1976d2;
-    border-radius: 15px;
+    background: #f8fafc;
+    border: 2px solid #cbd5e1;
+    border-radius: 16px;
     padding: 20px;
-    margin: 20px 0;
+    margin: 25px 0;
   }
   
   .student-list-box h3 {
-    color: #1565c0;
+    color: #2c3e50;
     margin-bottom: 15px;
     text-align: center;
+    font-size: 1.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
   
   .student-table {
@@ -171,55 +241,52 @@
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #e2e8f0;
   }
   
   .student-table th {
-    background: #1976d2;
+    background: #6c5ce7;
     color: white;
-    padding: 12px 8px;
+    padding: 12px 10px;
     font-size: 0.95em;
+    font-weight: 600;
   }
   
   .student-table td {
-    padding: 10px 8px;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 10px;
+    border-bottom: 1px solid #e2e8f0;
     text-align: center;
     font-size: 0.95em;
   }
   
   .student-table tr:nth-child(even) {
-    background: #f5f5f5;
-  }
-  
-  .student-table tr:hover {
-    background: #e3f2fd;
+    background: #f1f5f9;
   }
   
   .badge-kelas {
     display: inline-block;
     padding: 4px 12px;
-    border-radius: 15px;
+    border-radius: 12px;
     font-size: 0.85em;
     font-weight: bold;
     color: white;
   }
   
-  .badge-2a { background: #ff6b9d; }
-  .badge-2b { background: #4caf50; }
+  .badge-2a { background: #0984e3; }
+  .badge-2b { background: #00b894; }
   
   .loading-list {
     text-align: center;
     padding: 20px;
-    color: #666;
+    color: var(--text-muted);
   }
   
   .spinner-small {
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #1976d2;
+    border: 3px solid #e2e8f0;
+    border-top: 3px solid var(--primary-color);
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     animation: spin 1s linear infinite;
     margin: 0 auto 10px;
   }
@@ -232,7 +299,7 @@
   .empty-list {
     text-align: center;
     padding: 20px;
-    color: #888;
+    color: var(--text-muted);
     font-style: italic;
   }
   
@@ -241,32 +308,29 @@
   
   .question-card {
     background: white;
-    border: 2px solid #e0e0e0;
-    border-radius: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
     padding: 20px;
-    margin: 15px 0;
-    transition: all 0.3s;
-  }
-  
-  .question-card:hover {
-    border-color: #ff6b9d;
-    box-shadow: 0 4px 15px rgba(255,107,157,0.2);
+    margin: 18px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
   }
   
   .question-text {
     font-size: 1.1em;
-    font-weight: bold;
-    color: #333;
+    font-weight: 600;
+    color: var(--text-color);
     margin-bottom: 15px;
   }
   
   .question-number {
-    background: #ff6b9d;
+    background: #ff7675;
     color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
+    padding: 4px 14px;
+    border-radius: 12px;
     display: inline-block;
     margin-bottom: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
   }
   
   .options { display: flex; flex-direction: column; gap: 10px; }
@@ -274,45 +338,47 @@
   .option-label {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
-    background: #f8f9fa;
-    border-radius: 10px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
-    border: 2px solid transparent;
+    border: 2px solid #e2e8f0;
+    font-size: 1em;
   }
   
   .option-label:hover {
-    background: #fff5f7;
-    border-color: #ff6b9d;
+    background: #e0f2fe;
+    border-color: #74b9ff;
   }
   
   .option-label input[type="radio"] {
     margin-right: 12px;
     width: 20px;
     height: 20px;
-    accent-color: #ff6b9d;
+    accent-color: #4a90e2;
   }
   
   .student-form {
-    background: #e3f2fd;
-    padding: 20px;
-    border-radius: 15px;
+    background: #e0f2fe;
+    padding: 22px;
+    border-radius: 16px;
     margin-bottom: 20px;
+    border: 2px solid #bae6fd;
   }
   
   .student-form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     font-weight: bold;
-    color: #1565c0;
+    color: #0369a1;
   }
   
   .student-form input,
   .student-form select {
     width: 100%;
-    padding: 12px;
-    border: 2px solid #90caf9;
+    padding: 12px 14px;
+    border: 2px solid #93c5fd;
     border-radius: 10px;
     font-size: 1em;
     margin-bottom: 15px;
@@ -322,39 +388,38 @@
   .student-form input:focus,
   .student-form select:focus {
     outline: none;
-    border-color: #1565c0;
+    border-color: #2563eb;
   }
   
   /* RESULT */
   .result-box {
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 10px;
   }
   
   .score-circle {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px auto;
-    box-shadow: 0 10px 30px rgba(255,107,157,0.4);
+    box-shadow: 0 8px 20px rgba(255, 118, 117, 0.4);
   }
   
-  .score-circle .score { font-size: 3.5em; font-weight: bold; }
-  .score-circle .label { font-size: 1.2em; }
+  .score-circle .score { font-size: 3.2em; font-weight: bold; line-height: 1; }
+  .score-circle .label { font-size: 0.9em; opacity: 0.9; margin-top: 5px; }
   
   .message {
-    font-size: 1.3em;
-    color: #333;
-    margin: 20px 0;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 15px 0;
   }
-  
-  .emoji-big { font-size: 4em; margin: 10px 0; }
   
   .loading {
     display: none;
@@ -363,52 +428,57 @@
   }
   
   .spinner {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #ff6b9d;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid var(--primary-color);
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     animation: spin 1s linear infinite;
     margin: 0 auto 15px;
   }
   
   .error-msg {
-    background: #ffebee;
-    color: #c62828;
-    padding: 15px;
+    background: #ffe3e3;
+    color: #c0392b;
+    padding: 12px 15px;
     border-radius: 10px;
     margin: 15px 0;
-    border-left: 5px solid #c62828;
+    border-left: 5px solid #e74c3c;
     display: none;
+    font-size: 0.95em;
+    font-weight: bold;
   }
   
   .success-msg {
-    background: #e8f5e9;
-    color: #2e7d32;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 15px 0;
-    border-left: 5px solid #2e7d32;
+    background: #d4edda;
+    color: #155724;
+    padding: 16px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border-left: 5px solid #28a745;
+    font-size: 1.05em;
   }
   
   .refresh-btn {
-    background: #1976d2;
+    background: #6c5ce7;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 6px 14px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 0.9em;
-    margin-left: 10px;
+    font-size: 0.85em;
+    font-weight: bold;
+    transition: background 0.2s;
   }
   
   .refresh-btn:hover {
-    background: #1565c0;
+    background: #5b4bc4;
   }
   
   @media (max-width: 600px) {
-    .header h1 { font-size: 1.5em; }
-    .page { padding: 20px; }
+    body { padding: 10px; }
+    .header h1 { font-size: 1.7em; }
+    .page { padding: 20px 15px; }
     .section-title { font-size: 1.3em; }
     .student-table th, .student-table td { padding: 8px 4px; font-size: 0.85em; }
   }
@@ -418,8 +488,8 @@
 
 <div class="container">
   <div class="header">
-    <h1>📖 Kisah Nabi Ishaq AS</h1>
-    <p>🏫 Pendidikan Agama Islam - Kelas 2 SD</p>
+    <h1>Kisah Nabi Ishaq AS 📖</h1>
+    <p>Pendidikan Agama Islam - Kelas 2 SD</p>
   </div>
   
   <div class="nav-dots">
@@ -431,21 +501,21 @@
   
   <!-- HALAMAN 1: Pengenalan + Daftar Siswa -->
   <div class="page active" id="page1">
-    <h2 class="section-title">👨👩‍👦 1. Keluarga Nabi Ishaq AS</h2>
+    <h2 class="section-title">1. Keluarga Nabi Ishaq AS 👨‍👩‍👦</h2>
     
     <div class="story-card">
-      <p>Halo, anak-anak! 👋 Mari kita belajar tentang kisah <b>Nabi Ishaq AS</b>.</p>
-      <p style="margin-top:10px;">Nabi Ishaq AS adalah putra dari <b>Nabi Ibrahim AS</b> dan <b>Ibu Sarah</b>. Beliau juga merupakan adik dari <b>Nabi Ismail AS</b>. Mereka adalah keluarga yang sangat saleh dan dicintai oleh Allah SWT. 💕</p>
+      <p>Halo, anak-anak pintar! 👋 Mari kita belajar bersama tentang kisah <b>Nabi Ishaq AS</b>.</p>
+      <p style="margin-top:10px;">Nabi Ishaq AS adalah putra dari <b>Nabi Ibrahim AS</b> dan <b>Ibu Sarah</b>. Beliau juga merupakan adik dari <b>Nabi Ismail AS</b>. Mereka adalah keluarga yang sangat saleh, taat, dan dicintai oleh Allah SWT.</p>
     </div>
     
     <table class="info-table">
-      <tr><th>👴 Ayah</th><th>👩 Ibu</th><th> Saudara</th></tr>
+      <tr><th>Ayah</th><th>Ibu</th><th>Saudara</th></tr>
       <tr><td>Nabi Ibrahim AS</td><td>Sarah</td><td>Nabi Ismail AS</td></tr>
     </table>
     
     <!-- DAFTAR SISWA YANG SUDAH MENGERJAKAN -->
     <div class="student-list-box">
-      <h3>📋 Daftar Siswa yang Sudah Mengerjakan Kuis
+      <h3>🌟 Daftar Siswa yang Sudah Mengerjakan Kuis
         <button class="refresh-btn" onclick="loadStudentList()">🔄 Refresh</button>
       </h3>
       <div id="studentListContainer">
@@ -457,71 +527,71 @@
     </div>
     
     <div class="btn-container">
-      <button class="btn" onclick="goToPage(2)">Lanjut ke Halaman Berikutnya ➡️</button>
+      <button class="btn" onclick="goToPage(2)">Lanjut ke Halaman Berikutnya ➔</button>
     </div>
   </div>
   
   <!-- HALAMAN 2: Kelahiran -->
   <div class="page" id="page2">
-    <h2 class="section-title"> 2. Kelahiran yang Ajaib!</h2>
+    <h2 class="section-title">2. Kelahiran yang Ajaib ✨</h2>
     
     <div class="story-card">
-      <p>Kelahiran Nabi Ishaq AS adalah sebuah <b>keajaiban dari Allah SWT</b>! ✨</p>
-      <p style="margin-top:10px;">Beliau lahir di daerah <b>Hebron</b>  ketika Nabi Ibrahim sudah berusia <b>100 tahun</b> dan Ibu Sarah berusia <b>90 tahun</b>. Saat Nabi Ishaq lahir, kakaknya, yaitu Nabi Ismail AS, sudah berusia <b>14 tahun</b>.</p>
+      <p>Kelahiran Nabi Ishaq AS adalah sebuah <b>keajaiban dan karunia luar biasa dari Allah SWT</b>!</p>
+      <p style="margin-top:10px;">Beliau lahir di daerah <b>Hebron</b> ketika Nabi Ibrahim sudah berusia <b>100 tahun</b> dan Ibu Sarah berusia <b>90 tahun</b>. Saat Nabi Ishaq lahir, kakaknya, yaitu Nabi Ismail AS, sudah berusia <b>14 tahun</b>.</p>
     </div>
     
     <table class="info-table">
       <tr><th>Tokoh</th><th>Usia Saat Ishaq Lahir</th></tr>
-      <tr><td>Nabi Ibrahim</td><td>100 tahun 👴</td></tr>
-      <tr><td>Ibu Sarah</td><td>90 tahun 👵</td></tr>
-      <tr><td>Nabi Ismail</td><td>14 tahun 👦</td></tr>
+      <tr><td>Nabi Ibrahim</td><td>100 tahun</td></tr>
+      <tr><td>Ibu Sarah</td><td>90 tahun</td></tr>
+      <tr><td>Nabi Ismail</td><td>14 tahun</td></tr>
     </table>
     
     <div class="fact-box">
-      💡 <b>Tahukah kamu?</b> Nama <b>"Ishaq"</b> berasal dari bahasa Ibrani yang artinya <b>"TERTAWA"</b> 😄. Ibu Sarah sangat bahagia dan tertawa gembira ketika mendengar kabar akan memiliki anak di usia yang sudah tua!
+      💡 <b>Tahukah kamu?</b> Nama <b>"Ishaq"</b> berasal dari bahasa Ibrani yang artinya <b>"TERTAWA"</b>. Ibu Sarah sangat bahagia dan tersenyum gembira ketika mendengar kabar gembira akan memiliki anak di usia tua!
     </div>
     
     <div class="btn-container">
-      <button class="btn" onclick="goToPage(1)">⬅️ Kembali</button>
-      <button class="btn" onclick="goToPage(3)">Lanjut ➡️</button>
+      <button class="btn" onclick="goToPage(1)">⬅ Kembali</button>
+      <button class="btn" onclick="goToPage(3)">Lanjut ➔</button>
     </div>
   </div>
   
   <!-- HALAMAN 3: Pernikahan & Dakwah -->
   <div class="page" id="page3">
-    <h2 class="section-title">💑 3. Pernikahan & Dakwah</h2>
+    <h2 class="section-title">3. Pernikahan & Dakwah 🌿</h2>
     
     <div class="story-card">
-      <p>Ketika berusia <b>40 tahun</b>, Nabi Ishaq AS menikah dengan seorang wanita bernama <b>Rafqah</b>. 💕</p>
-      <p style="margin-top:10px;">Dari pernikahan yang penuh berkah ini, Allah SWT mengaruniakan mereka <b>anak kembar</b> yang saleh, yaitu <b>Ish (Esau)</b> dan <b>Ya'qub</b>. Ya'qub kelak juga diangkat menjadi Nabi, yaitu <b>Nabi Yakub AS</b>.</p>
+      <p>Ketika berusia <b>40 tahun</b>, Nabi Ishaq AS menikah dengan seorang wanita salihah bernama <b>Rafqah</b>.</p>
+      <p style="margin-top:10px;">Dari pernikahan yang penuh berkah ini, Allah SWT mengaruniakan mereka <b>anak kembar</b>, yaitu <b>Ish (Esau)</b> dan <b>Ya'qub</b>. Ya'qub kelak juga diangkat menjadi Nabi, yaitu <b>Nabi Yakub AS</b>.</p>
     </div>
     
-    <h3 style="color:#c06c84; margin:20px 0 10px;"> Dakwah Nabi Ishaq</h3>
+    <h3 style="color:#2c3e50; margin:20px 0 10px;">Dakwah Nabi Ishaq</h3>
     
     <div class="story-card">
       <p>Nabi Ishaq AS diutus oleh Allah SWT untuk berdakwah kepada <b>suku Kan'an</b>.</p>
-      <p style="margin-top:10px;">Dalam menyebarkan ajaran agama, beliau selalu menggunakan cara yang sangat <b>lembut</b> 🕊️, <b>sabar</b>, dan <b>penuh perdamaian</b> ☮️. Berkat kelembutannya, banyak orang yang akhirnya beriman dan mengikuti ajaran beliau. ✨</p>
+      <p style="margin-top:10px;">Dalam menyebarkan ajaran agama, beliau selalu menggunakan cara yang sangat <b>lembut</b>, <b>sabar</b>, dan <b>penuh perdamaian</b>. Berkat kelembutannya, banyak orang yang tersentuh dan mau beriman kepada Allah SWT.</p>
     </div>
     
     <div class="fact-box">
-       <b>Pesan Moral:</b> Dari kisah Nabi Ishaq, kita belajar untuk selalu berbicara lembut, bersikap damai kepada sesama teman, dan senantiasa beriman kepada Allah SWT.
+       ⭐ <b>Pesan Moral:</b> Dari kisah Nabi Ishaq, kita belajar untuk selalu berbicara sopan dan lembut, bersikap damai kepada sesama teman, serta rajin beribadah kepada Allah SWT.
     </div>
     
     <div class="btn-container">
-      <button class="btn" onclick="goToPage(2)">️ Kembali</button>
-      <button class="btn btn-secondary" onclick="goToPage(4)">📝 Mulai Kuis! ➡️</button>
+      <button class="btn" onclick="goToPage(2)">⬅ Kembali</button>
+      <button class="btn btn-secondary" onclick="goToPage(4)">📝 Mulai Kuis ➔</button>
     </div>
   </div>
   
   <!-- HALAMAN 4: Kuis -->
   <div class="page" id="page4">
-    <h2 class="section-title"> Kuis: Kisah Nabi Ishaq AS</h2>
+    <h2 class="section-title">Kuis: Kisah Nabi Ishaq AS ✏️</h2>
     
     <div class="student-form">
-      <label for="nama">️ Nama Lengkap:</label>
-      <input type="text" id="nama" placeholder="Tulis nama kamu di sini..." required>
+      <label for="nama">Nama Lengkap Siswa:</label>
+      <input type="text" id="nama" placeholder="Tulis nama lengkap kamu di sini..." required>
       
-      <label for="kelas">🏫 Pilih Kelas:</label>
+      <label for="kelas">Pilih Kelas Kamu:</label>
       <select id="kelas" required>
         <option value="">-- Pilih Kelas --</option>
         <option value="2A">Kelas 2A</option>
@@ -641,11 +711,11 @@
         </div>
       </div>
       
-      <div class="error-msg" id="errorMsg">⚠️ Mohon lengkapi nama dan semua soal terlebih dahulu!</div>
+      <div class="error-msg" id="errorMsg">Mohon lengkapi nama dan semua soal terlebih dahulu!</div>
       
       <div class="btn-container">
-        <button type="button" class="btn" onclick="goToPage(3)">⬅️ Kembali ke Materi</button>
-        <button type="button" class="btn btn-secondary" onclick="submitQuiz()">✅ Kirim Jawaban</button>
+        <button type="button" class="btn" onclick="goToPage(3)">⬅ Kembali ke Materi</button>
+        <button type="button" class="btn btn-secondary" onclick="submitQuiz()">🚀 Kirim Jawaban</button>
       </div>
     </form>
     
@@ -658,19 +728,18 @@
   <!-- HALAMAN HASIL -->
   <div class="page" id="pageResult">
     <div class="result-box">
-      <h2 class="section-title" style="border:none;">🎉 Kuis Selesai!</h2>
-      <div class="emoji-big" id="resultEmoji"></div>
+      <h2 class="section-title" style="border:none; justify-content:center;">🎉 Kuis Selesai! 🎉</h2>
       <div class="score-circle">
         <div class="score" id="scoreValue">0</div>
         <div class="label">dari 100</div>
       </div>
       <div class="message" id="resultMessage">Hebat!</div>
-      <p id="resultDetail" style="color:#666; margin:10px 0;"></p>
+      <p id="resultDetail" style="color:var(--text-muted); margin:10px 0;"></p>
       <div class="success-msg">
-        ✅ Jawaban kamu sudah berhasil dikirim ke guru! Terima kasih sudah belajar dengan rajin! 
+        Jawaban kamu sudah berhasil dikirim ke guru! Terima kasih sudah belajar dengan rajin! 🌟
       </div>
       <div class="btn-container">
-        <button class="btn" onclick="location.reload()"> Ulangi Kuis</button>
+        <button class="btn" onclick="location.reload()">🔄 Ulangi Kuis</button>
       </div>
     </div>
   </div>
@@ -678,7 +747,7 @@
 
 <script>
   // ============================================
-  // ⚙️ GANTI URL DI BAWAH INI DENGAN URL WEB APP ANDA
+  // GANTI URL DI BAWAH INI DENGAN URL WEB APP ANDA
   // ============================================
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQecc5KSg2GE4O8m8D-pvLebbKWoPratqLoDUVhKpPgOlYCDNhU8mW-no05IdfTKDA/exec';
   // ============================================
@@ -775,7 +844,7 @@
         } else {
           container.innerHTML = `
             <div class="empty-list">
-              📭 Belum ada siswa yang mengerjakan kuis. Jadilah yang pertama! 
+              Belum ada siswa yang mengerjakan kuis. Jadilah yang pertama! 🎈
             </div>
           `;
         }
@@ -784,7 +853,7 @@
         console.error('Error loading students:', err);
         container.innerHTML = `
           <div class="empty-list">
-            ⚠️ Gagal memuat daftar siswa. Silakan coba lagi.
+            Gagal memuat daftar siswa. Silakan coba lagi.
           </div>
         `;
       });
@@ -799,14 +868,14 @@
     // Validasi
     if (!nama) {
       errorMsg.style.display = 'block';
-      errorMsg.textContent = '⚠️ Mohon isi nama terlebih dahulu!';
+      errorMsg.textContent = 'Mohon isi nama kamu terlebih dahulu!';
       window.scrollTo({ top: document.getElementById('quizForm').offsetTop - 100, behavior: 'smooth' });
       return;
     }
     
     if (!kelas) {
       errorMsg.style.display = 'block';
-      errorMsg.textContent = '⚠️ Mohon pilih kelas (2A atau 2B)!';
+      errorMsg.textContent = 'Mohon pilih kelas kamu (2A atau 2B)!';
       window.scrollTo({ top: document.getElementById('quizForm').offsetTop - 100, behavior: 'smooth' });
       return;
     }
@@ -816,7 +885,7 @@
       const selected = document.querySelector(`input[name="q${i}"]:checked`);
       if (!selected) {
         errorMsg.style.display = 'block';
-        errorMsg.textContent = `⚠️ Soal nomor ${i} belum dijawab!`;
+        errorMsg.textContent = `Soal nomor ${i} belum dijawab!`;
         const card = document.querySelectorAll('.question-card')[i-1];
         window.scrollTo({ top: card.offsetTop - 100, behavior: 'smooth' });
         return;
@@ -883,24 +952,18 @@
     document.getElementById('resultDetail').textContent = 
       `Halo ${nama} dari Kelas ${kelas}! Kamu menjawab ${correct} dari 10 soal dengan benar.`;
     
-    const emoji = document.getElementById('resultEmoji');
     const message = document.getElementById('resultMessage');
     
     if (score === 100) {
-      emoji.textContent = '🏆';
-      message.textContent = 'Sempurna! Kamu luar biasa! 🌟';
+      message.textContent = '🌟 Sempurna! Kamu luar biasa!';
     } else if (score >= 80) {
-      emoji.textContent = '🎉';
-      message.textContent = 'Hebat! Pertahankan ya! 👏';
+      message.textContent = '👏 Hebat! Pertahankan ya!';
     } else if (score >= 60) {
-      emoji.textContent = '😊';
-      message.textContent = 'Bagus! Terus belajar ya! ';
+      message.textContent = '😊 Bagus! Terus belajar ya!';
     } else if (score >= 40) {
-      emoji.textContent = '💪';
-      message.textContent = 'Lumayan! Ayo belajar lagi! 📖';
+      message.textContent = '👍 Lumayan! Ayo belajar lagi!';
     } else {
-      emoji.textContent = '🤗';
-      message.textContent = 'Jangan menyerah! Coba lagi ya! 💕';
+      message.textContent = '💪 Jangan menyerah! Coba lagi ya!';
     }
     
     document.querySelectorAll('.nav-dot').forEach(d => d.classList.add('done'));
