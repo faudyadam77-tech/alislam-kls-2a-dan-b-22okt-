@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kisah Nabi Ishaq AS - Kelas 2 SD</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif; }
+  
+  body {
+    background: linear-gradient(135deg, #ffe5ec 0%, #c8e7ff 50%, #d4f1d4 100%);
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .header h1 { font-size: 2.2em; margin-bottom: 10px; }
+  .header p { font-size: 1.1em; opacity: 0.95; }
+  
+  .nav-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background: #f8f9fa;
+  }
+  
+  .nav-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #666;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  
+  .nav-dot.active {
+    background: #ff6b9d;
+    color: white;
+    transform: scale(1.2);
+  }
+  
+  .nav-dot.done {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .page { display: none; padding: 30px; animation: fadeIn 0.5s; }
+  .page.active { display: block; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .section-title {
+    color: #c06c84;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    border-bottom: 3px dashed #ff6b9d;
+    padding-bottom: 10px;
+  }
+  
+  .story-card {
+    background: linear-gradient(135deg, #fff5f7 0%, #ffe5ec 100%);
+    border-left: 5px solid #ff6b9d;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 15px;
+    font-size: 1.05em;
+    line-height: 1.8;
+  }
+  
+  .fact-box {
+    background: #fff3cd;
+    border: 2px dashed #ffc107;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+  }
+  
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .info-table th {
+    background: #ff6b9d;
+    color: white;
+    padding: 12px;
+  }
+  
+  .info-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+  
+  .btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: all 0.3s;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255,107,157,0.4);
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255,107,157,0.6);
+  }
+  
+  .btn-secondary {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    box-shadow: 0 4px 15px rgba(76,175,80,0.4);
+  }
+  
+  .btn-container {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  /* DAFTAR SISWA */
+  .student-list-box {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border: 2px solid #1976d2;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .student-list-box h3 {
+    color: #1565c0;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .student-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .student-table th {
+    background: #1976d2;
+    color: white;
+    padding: 12px 8px;
+    font-size: 0.95em;
+  }
+  
+  .student-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+    font-size: 0.95em;
+  }
+  
+  .student-table tr:nth-child(even) {
+    background: #f5f5f5;
+  }
+  
+  .student-table tr:hover {
+    background: #e3f2fd;
+  }
+  
+  .badge-kelas {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .badge-2a { background: #ff6b9d; }
+  .badge-2b { background: #4caf50; }
+  
+  .loading-list {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+  }
+  
+  .spinner-small {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1976d2;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .empty-list {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-style: italic;
+  }
+  
+  /* QUIZ STYLES */
+  .quiz-form { margin-top: 20px; }
+  
+  .question-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px 0;
+    transition: all 0.3s;
+  }
+  
+  .question-card:hover {
+    border-color: #ff6b9d;
+    box-shadow: 0 4px 15px rgba(255,107,157,0.2);
+  }
+  
+  .question-text {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .question-number {
+    background: #ff6b9d;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  
+  .option-label {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+  
+  .option-label:hover {
+    background: #fff5f7;
+    border-color: #ff6b9d;
+  }
+  
+  .option-label input[type="radio"] {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    accent-color: #ff6b9d;
+  }
+  
+  .student-form {
+    background: #e3f2fd;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .student-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1565c0;
+  }
+  
+  .student-form input,
+  .student-form select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #90caf9;
+    border-radius: 10px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    background: white;
+  }
+  
+  .student-form input:focus,
+  .student-form select:focus {
+    outline: none;
+    border-color: #1565c0;
+  }
+  
+  /* RESULT */
+  .result-box {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .score-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(255,107,157,0.4);
+  }
+  
+  .score-circle .score { font-size: 3.5em; font-weight: bold; }
+  .score-circle .label { font-size: 1.2em; }
+  
+  .message {
+    font-size: 1.3em;
+    color: #333;
+    margin: 20px 0;
+  }
+  
+  .emoji-big { font-size: 4em; margin: 10px 0; }
+  
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ff6b9d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+  }
+  
+  .error-msg {
+    background: #ffebee;
+    color: #c62828;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border-left: 5px solid #c62828;
+    display: none;
+  }
+  
+  .success-msg {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border-left: 5px solid #2e7d32;
+  }
+  
+  .refresh-btn {
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+  }
+  
+  .refresh-btn:hover {
+    background: #1565c0;
+  }
+  
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5em; }
+    .page { padding: 20px; }
+    .section-title { font-size: 1.3em; }
+    .student-table th, .student-table td { padding: 8px 4px; font-size: 0.85em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>📖 Kisah Nabi Ishaq AS</h1>
+    <p>🏫 Pendidikan Agama Islam - Kelas 2 SD</p>
+  </div>
+  
+  <div class="nav-dots">
+    <div class="nav-dot active" data-page="1">1</div>
+    <div class="nav-dot" data-page="2">2</div>
+    <div class="nav-dot" data-page="3">3</div>
+    <div class="nav-dot" data-page="4">4</div>
+  </div>
+  
+  <!-- HALAMAN 1: Pengenalan + Daftar Siswa -->
+  <div class="page active" id="page1">
+    <h2 class="section-title">👨👩‍👦 1. Keluarga Nabi Ishaq AS</h2>
+    
+    <div class="story-card">
+      <p>Halo, anak-anak! 👋 Mari kita belajar tentang kisah <b>Nabi Ishaq AS</b>.</p>
+      <p style="margin-top:10px;">Nabi Ishaq AS adalah putra dari <b>Nabi Ibrahim AS</b> dan <b>Ibu Sarah</b>. Beliau juga merupakan adik dari <b>Nabi Ismail AS</b>. Mereka adalah keluarga yang sangat saleh dan dicintai oleh Allah SWT. 💕</p>
+    </div>
+    
+    <table class="info-table">
+      <tr><th>👴 Ayah</th><th>👩 Ibu</th><th> Saudara</th></tr>
+      <tr><td>Nabi Ibrahim AS</td><td>Sarah</td><td>Nabi Ismail AS</td></tr>
+    </table>
+    
+    <!-- DAFTAR SISWA YANG SUDAH MENGERJAKAN -->
+    <div class="student-list-box">
+      <h3>📋 Daftar Siswa yang Sudah Mengerjakan Kuis
+        <button class="refresh-btn" onclick="loadStudentList()">🔄 Refresh</button>
+      </h3>
+      <div id="studentListContainer">
+        <div class="loading-list">
+          <div class="spinner-small"></div>
+          <p>Memuat daftar siswa...</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="btn-container">
+      <button class="btn" onclick="goToPage(2)">Lanjut ke Halaman Berikutnya ➡️</button>
+    </div>
+  </div>
+  
+  <!-- HALAMAN 2: Kelahiran -->
+  <div class="page" id="page2">
+    <h2 class="section-title"> 2. Kelahiran yang Ajaib!</h2>
+    
+    <div class="story-card">
+      <p>Kelahiran Nabi Ishaq AS adalah sebuah <b>keajaiban dari Allah SWT</b>! ✨</p>
+      <p style="margin-top:10px;">Beliau lahir di daerah <b>Hebron</b>  ketika Nabi Ibrahim sudah berusia <b>100 tahun</b> dan Ibu Sarah berusia <b>90 tahun</b>. Saat Nabi Ishaq lahir, kakaknya, yaitu Nabi Ismail AS, sudah berusia <b>14 tahun</b>.</p>
+    </div>
+    
+    <table class="info-table">
+      <tr><th>Tokoh</th><th>Usia Saat Ishaq Lahir</th></tr>
+      <tr><td>Nabi Ibrahim</td><td>100 tahun 👴</td></tr>
+      <tr><td>Ibu Sarah</td><td>90 tahun 👵</td></tr>
+      <tr><td>Nabi Ismail</td><td>14 tahun 👦</td></tr>
+    </table>
+    
+    <div class="fact-box">
+      💡 <b>Tahukah kamu?</b> Nama <b>"Ishaq"</b> berasal dari bahasa Ibrani yang artinya <b>"TERTAWA"</b> 😄. Ibu Sarah sangat bahagia dan tertawa gembira ketika mendengar kabar akan memiliki anak di usia yang sudah tua!
+    </div>
+    
+    <div class="btn-container">
+      <button class="btn" onclick="goToPage(1)">⬅️ Kembali</button>
+      <button class="btn" onclick="goToPage(3)">Lanjut ➡️</button>
+    </div>
+  </div>
+  
+  <!-- HALAMAN 3: Pernikahan & Dakwah -->
+  <div class="page" id="page3">
+    <h2 class="section-title">💑 3. Pernikahan & Dakwah</h2>
+    
+    <div class="story-card">
+      <p>Ketika berusia <b>40 tahun</b>, Nabi Ishaq AS menikah dengan seorang wanita bernama <b>Rafqah</b>. 💕</p>
+      <p style="margin-top:10px;">Dari pernikahan yang penuh berkah ini, Allah SWT mengaruniakan mereka <b>anak kembar</b> yang saleh, yaitu <b>Ish (Esau)</b> dan <b>Ya'qub</b>. Ya'qub kelak juga diangkat menjadi Nabi, yaitu <b>Nabi Yakub AS</b>.</p>
+    </div>
+    
+    <h3 style="color:#c06c84; margin:20px 0 10px;"> Dakwah Nabi Ishaq</h3>
+    
+    <div class="story-card">
+      <p>Nabi Ishaq AS diutus oleh Allah SWT untuk berdakwah kepada <b>suku Kan'an</b>.</p>
+      <p style="margin-top:10px;">Dalam menyebarkan ajaran agama, beliau selalu menggunakan cara yang sangat <b>lembut</b> 🕊️, <b>sabar</b>, dan <b>penuh perdamaian</b> ☮️. Berkat kelembutannya, banyak orang yang akhirnya beriman dan mengikuti ajaran beliau. ✨</p>
+    </div>
+    
+    <div class="fact-box">
+       <b>Pesan Moral:</b> Dari kisah Nabi Ishaq, kita belajar untuk selalu berbicara lembut, bersikap damai kepada sesama teman, dan senantiasa beriman kepada Allah SWT.
+    </div>
+    
+    <div class="btn-container">
+      <button class="btn" onclick="goToPage(2)">️ Kembali</button>
+      <button class="btn btn-secondary" onclick="goToPage(4)">📝 Mulai Kuis! ➡️</button>
+    </div>
+  </div>
+  
+  <!-- HALAMAN 4: Kuis -->
+  <div class="page" id="page4">
+    <h2 class="section-title"> Kuis: Kisah Nabi Ishaq AS</h2>
+    
+    <div class="student-form">
+      <label for="nama">️ Nama Lengkap:</label>
+      <input type="text" id="nama" placeholder="Tulis nama kamu di sini..." required>
+      
+      <label for="kelas">🏫 Pilih Kelas:</label>
+      <select id="kelas" required>
+        <option value="">-- Pilih Kelas --</option>
+        <option value="2A">Kelas 2A</option>
+        <option value="2B">Kelas 2B</option>
+      </select>
+    </div>
+    
+    <form class="quiz-form" id="quizForm">
+      
+      <div class="question-card">
+        <span class="question-number">Soal 1</span>
+        <div class="question-text">Siapakah ayah dari Nabi Ishaq AS?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q1" value="A" required> A. Nabi Nuh AS</label>
+          <label class="option-label"><input type="radio" name="q1" value="B"> B. Nabi Ibrahim AS</label>
+          <label class="option-label"><input type="radio" name="q1" value="C"> C. Nabi Musa AS</label>
+          <label class="option-label"><input type="radio" name="q1" value="D"> D. Nabi Adam AS</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 2</span>
+        <div class="question-text">Siapakah ibu dari Nabi Ishaq AS?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q2" value="A" required> A. Siti Maryam</label>
+          <label class="option-label"><input type="radio" name="q2" value="B"> B. Siti Hajar</label>
+          <label class="option-label"><input type="radio" name="q2" value="C"> C. Sarah</label>
+          <label class="option-label"><input type="radio" name="q2" value="D"> D. Siti Aisyah</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 3</span>
+        <div class="question-text">Siapakah saudara Nabi Ishaq AS?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q3" value="A" required> A. Nabi Yusuf AS</label>
+          <label class="option-label"><input type="radio" name="q3" value="B"> B. Nabi Ismail AS</label>
+          <label class="option-label"><input type="radio" name="q3" value="C"> C. Nabi Yakub AS</label>
+          <label class="option-label"><input type="radio" name="q3" value="D"> D. Nabi Musa AS</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 4</span>
+        <div class="question-text">Berapa usia Nabi Ibrahim saat Nabi Ishaq lahir?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q4" value="A" required> A. 80 tahun</label>
+          <label class="option-label"><input type="radio" name="q4" value="B"> B. 90 tahun</label>
+          <label class="option-label"><input type="radio" name="q4" value="C"> C. 100 tahun</label>
+          <label class="option-label"><input type="radio" name="q4" value="D"> D. 120 tahun</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 5</span>
+        <div class="question-text">Berapa usia Ibu Sarah saat Nabi Ishaq lahir?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q5" value="A" required> A. 70 tahun</label>
+          <label class="option-label"><input type="radio" name="q5" value="B"> B. 80 tahun</label>
+          <label class="option-label"><input type="radio" name="q5" value="C"> C. 90 tahun</label>
+          <label class="option-label"><input type="radio" name="q5" value="D"> D. 100 tahun</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 6</span>
+        <div class="question-text">Di daerah manakah Nabi Ishaq AS lahir?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q6" value="A" required> A. Mekah</label>
+          <label class="option-label"><input type="radio" name="q6" value="B"> B. Madinah</label>
+          <label class="option-label"><input type="radio" name="q6" value="C"> C. Yerusalem</label>
+          <label class="option-label"><input type="radio" name="q6" value="D"> D. Hebron</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 7</span>
+        <div class="question-text">Apa arti nama "Ishaq" dalam bahasa Ibrani?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q7" value="A" required> A. Tertawa</label>
+          <label class="option-label"><input type="radio" name="q7" value="B"> B. Menangis</label>
+          <label class="option-label"><input type="radio" name="q7" value="C"> C. Bahagia</label>
+          <label class="option-label"><input type="radio" name="q7" value="D"> D. Sabar</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 8</span>
+        <div class="question-text">Siapakah istri Nabi Ishaq AS?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q8" value="A" required> A. Siti Hajar</label>
+          <label class="option-label"><input type="radio" name="q8" value="B"> B. Rafqah</label>
+          <label class="option-label"><input type="radio" name="q8" value="C"> C. Sarah</label>
+          <label class="option-label"><input type="radio" name="q8" value="D"> D. Maryam</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 9</span>
+        <div class="question-text">Kepada suku manakah Nabi Ishaq AS berdakwah?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q9" value="A" required> A. Suku Quraisy</label>
+          <label class="option-label"><input type="radio" name="q9" value="B"> B. Suku Kan'an</label>
+          <label class="option-label"><input type="radio" name="q9" value="C"> C. Suku Bani Israil</label>
+          <label class="option-label"><input type="radio" name="q9" value="D"> D. Suku Arab</label>
+        </div>
+      </div>
+      
+      <div class="question-card">
+        <span class="question-number">Soal 10</span>
+        <div class="question-text">Bagaimana cara Nabi Ishaq AS dalam berdakwah?</div>
+        <div class="options">
+          <label class="option-label"><input type="radio" name="q10" value="A" required> A. Dengan keras dan marah</label>
+          <label class="option-label"><input type="radio" name="q10" value="B"> B. Dengan lembut dan damai</label>
+          <label class="option-label"><input type="radio" name="q10" value="C"> C. Dengan diam saja</label>
+          <label class="option-label"><input type="radio" name="q10" value="D"> D. Dengan paksaan</label>
+        </div>
+      </div>
+      
+      <div class="error-msg" id="errorMsg">⚠️ Mohon lengkapi nama dan semua soal terlebih dahulu!</div>
+      
+      <div class="btn-container">
+        <button type="button" class="btn" onclick="goToPage(3)">⬅️ Kembali ke Materi</button>
+        <button type="button" class="btn btn-secondary" onclick="submitQuiz()">✅ Kirim Jawaban</button>
+      </div>
+    </form>
+    
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <p>Mengirim jawaban... Mohon tunggu ya! 😊</p>
+    </div>
+  </div>
+  
+  <!-- HALAMAN HASIL -->
+  <div class="page" id="pageResult">
+    <div class="result-box">
+      <h2 class="section-title" style="border:none;">🎉 Kuis Selesai!</h2>
+      <div class="emoji-big" id="resultEmoji"></div>
+      <div class="score-circle">
+        <div class="score" id="scoreValue">0</div>
+        <div class="label">dari 100</div>
+      </div>
+      <div class="message" id="resultMessage">Hebat!</div>
+      <p id="resultDetail" style="color:#666; margin:10px 0;"></p>
+      <div class="success-msg">
+        ✅ Jawaban kamu sudah berhasil dikirim ke guru! Terima kasih sudah belajar dengan rajin! 
+      </div>
+      <div class="btn-container">
+        <button class="btn" onclick="location.reload()"> Ulangi Kuis</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ============================================
+  // ⚙️ GANTI URL DI BAWAH INI DENGAN URL WEB APP ANDA
+  // ============================================
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQecc5KSg2GE4O8m8D-pvLebbKWoPratqLoDUVhKpPgOlYCDNhU8mW-no05IdfTKDA/exec';
+  // ============================================
+  
+  // Kunci jawaban
+  const correctAnswers = {
+    q1: 'B', q2: 'C', q3: 'B', q4: 'C', q5: 'C',
+    q6: 'D', q7: 'A', q8: 'B', q9: 'B', q10: 'B'
+  };
+  
+  let currentPage = 1;
+  
+  function goToPage(pageNum) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page' + pageNum).classList.add('active');
+    
+    document.querySelectorAll('.nav-dot').forEach(dot => {
+      dot.classList.remove('active');
+      if (parseInt(dot.dataset.page) === pageNum) {
+        dot.classList.add('active');
+      }
+    });
+    
+    currentPage = pageNum;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Jika ke halaman 1, load daftar siswa
+    if (pageNum === 1) {
+      loadStudentList();
+    }
+  }
+  
+  // ====== FUNGSI LOAD DAFTAR SISWA ======
+  function loadStudentList() {
+    const container = document.getElementById('studentListContainer');
+    container.innerHTML = `
+      <div class="loading-list">
+        <div class="spinner-small"></div>
+        <p>Memuat daftar siswa...</p>
+      </div>
+    `;
+    
+    if (APPS_SCRIPT_URL === 'GANTI_DENGAN_URL_APPS_SCRIPT_ANDA') {
+      // Mode demo - tampilkan data contoh
+      setTimeout(() => {
+        container.innerHTML = `
+          <div class="empty-list">
+             Mode Demo - Hubungkan ke Google Apps Script untuk melihat data siswa yang sebenarnya.
+          </div>
+        `;
+      }, 800);
+      return;
+    }
+    
+    fetch(APPS_SCRIPT_URL + '?action=getStudents')
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success' && data.students && data.students.length > 0) {
+          // Urutkan berdasarkan kelas (2A dulu, lalu 2B), lalu berdasarkan waktu (terbaru)
+          const sorted = data.students.sort((a, b) => {
+            if (a.kelas !== b.kelas) return a.kelas.localeCompare(b.kelas);
+            return new Date(b.waktu) - new Date(a.waktu);
+          });
+          
+          let html = `
+            <table class="student-table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Kelas</th>
+                  <th>Skor</th>
+                  <th>Waktu Mengerjakan</th>
+                </tr>
+              </thead>
+              <tbody>
+          `;
+          
+          sorted.forEach((s, index) => {
+            const badgeClass = s.kelas === '2A' ? 'badge-2a' : 'badge-2b';
+            html += `
+              <tr>
+                <td>${index + 1}</td>
+                <td><b>${s.nama}</b></td>
+                <td><span class="badge-kelas ${badgeClass}">${s.kelas}</span></td>
+                <td><b>${s.skor}</b></td>
+                <td>${s.waktu}</td>
+              </tr>
+            `;
+          });
+          
+          html += `</tbody></table>`;
+          container.innerHTML = html;
+        } else {
+          container.innerHTML = `
+            <div class="empty-list">
+              📭 Belum ada siswa yang mengerjakan kuis. Jadilah yang pertama! 
+            </div>
+          `;
+        }
+      })
+      .catch(err => {
+        console.error('Error loading students:', err);
+        container.innerHTML = `
+          <div class="empty-list">
+            ⚠️ Gagal memuat daftar siswa. Silakan coba lagi.
+          </div>
+        `;
+      });
+  }
+  
+  // ====== FUNGSI SUBMIT KUIS ======
+  function submitQuiz() {
+    const nama = document.getElementById('nama').value.trim();
+    const kelas = document.getElementById('kelas').value;
+    const errorMsg = document.getElementById('errorMsg');
+    
+    // Validasi
+    if (!nama) {
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = '⚠️ Mohon isi nama terlebih dahulu!';
+      window.scrollTo({ top: document.getElementById('quizForm').offsetTop - 100, behavior: 'smooth' });
+      return;
+    }
+    
+    if (!kelas) {
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = '⚠️ Mohon pilih kelas (2A atau 2B)!';
+      window.scrollTo({ top: document.getElementById('quizForm').offsetTop - 100, behavior: 'smooth' });
+      return;
+    }
+    
+    // Cek semua soal terjawab
+    for (let i = 1; i <= 10; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!selected) {
+        errorMsg.style.display = 'block';
+        errorMsg.textContent = `⚠️ Soal nomor ${i} belum dijawab!`;
+        const card = document.querySelectorAll('.question-card')[i-1];
+        window.scrollTo({ top: card.offsetTop - 100, behavior: 'smooth' });
+        return;
+      }
+    }
+    
+    errorMsg.style.display = 'none';
+    
+    // Hitung skor
+    let correct = 0;
+    const answers = {};
+    for (let i = 1; i <= 10; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`).value;
+      answers['q' + i] = selected;
+      if (selected === correctAnswers['q' + i]) correct++;
+    }
+    const score = correct * 10;
+    
+    // Tampilkan loading
+    document.getElementById('quizForm').style.display = 'none';
+    document.querySelector('.student-form').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    
+    // Siapkan data untuk dikirim
+    const data = {
+      nama: nama,
+      kelas: kelas,
+      skor: score,
+      benar: correct,
+      salah: 10 - correct,
+      jawaban: JSON.stringify(answers),
+      waktu: new Date().toLocaleString('id-ID')
+    };
+    
+    // Kirim ke Google Apps Script
+    if (APPS_SCRIPT_URL === 'GANTI_DENGAN_URL_APPS_SCRIPT_ANDA') {
+      // Mode demo
+      setTimeout(() => {
+        showResult(score, correct, nama, kelas);
+      }, 1500);
+    } else {
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        setTimeout(() => showResult(score, correct, nama, kelas), 1500);
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        setTimeout(() => showResult(score, correct, nama, kelas), 1500);
+      });
+    }
+  }
+  
+  function showResult(score, correct, nama, kelas) {
+    document.getElementById('loading').style.display = 'none';
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('pageResult').classList.add('active');
+    
+    document.getElementById('scoreValue').textContent = score;
+    document.getElementById('resultDetail').textContent = 
+      `Halo ${nama} dari Kelas ${kelas}! Kamu menjawab ${correct} dari 10 soal dengan benar.`;
+    
+    const emoji = document.getElementById('resultEmoji');
+    const message = document.getElementById('resultMessage');
+    
+    if (score === 100) {
+      emoji.textContent = '🏆';
+      message.textContent = 'Sempurna! Kamu luar biasa! 🌟';
+    } else if (score >= 80) {
+      emoji.textContent = '🎉';
+      message.textContent = 'Hebat! Pertahankan ya! 👏';
+    } else if (score >= 60) {
+      emoji.textContent = '😊';
+      message.textContent = 'Bagus! Terus belajar ya! ';
+    } else if (score >= 40) {
+      emoji.textContent = '💪';
+      message.textContent = 'Lumayan! Ayo belajar lagi! 📖';
+    } else {
+      emoji.textContent = '🤗';
+      message.textContent = 'Jangan menyerah! Coba lagi ya! 💕';
+    }
+    
+    document.querySelectorAll('.nav-dot').forEach(d => d.classList.add('done'));
+  }
+  
+  // Navigasi dot
+  document.querySelectorAll('.nav-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      const page = parseInt(dot.dataset.page);
+      if (page <= currentPage || page === 4) {
+        goToPage(page);
+      }
+    });
+  });
+  
+  // Load daftar siswa saat halaman pertama kali dimuat
+  window.addEventListener('load', () => {
+    loadStudentList();
+  });
+</script>
+
+</body>
+</html>
